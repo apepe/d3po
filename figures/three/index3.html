@@ -5,7 +5,7 @@
 	<button onclick="simulation_stopped = true;">Stop!</button>
 	<br><br>
   <div id="gravity_slider" style="width:30%"></div>
-	<p>gravity = <span id="gravity_value">1.0</span>
+	<p>gravity = <span id="gravity_value"></span>
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r57/three.min.js"></script>
@@ -17,7 +17,7 @@
   var camera, scene, renderer;
   var geometry, material, mesh;
 
-  var gravity = 1.0;
+  var gravity = 2.0;
   var ground_position  = -220;
   var half_world_width = 500;
   var simulation_stopped = true;
@@ -61,6 +61,8 @@
 
     renderer.render( scene, camera );
 
+    
+
   }
 
   function update_world() {
@@ -72,11 +74,12 @@
 
 
 
-  	if( (mesh.position.y < ground_position)  ){
+  	if( (mesh.position.y < ground_position) ){
        mesh.speed.y = -mesh.speed.y;
     }
   	else{
-  		mesh.speed.y -= $("#gravity_slider").slider("value");
+      
+  		mesh.speed.y -= gravity;
   	}
 
     if( (mesh.position.x < -half_world_width) || (mesh.position.x > half_world_width) ){
@@ -86,7 +89,12 @@
   }
 
   $(function() {
-    $( "#gravity_slider" ).slider({ min: 0.0, max:10.0, value: 1.0, step: 0.1 });
+    $( "#gravity_value" ).html( gravity);
+    $( "#gravity_slider" ).slider({ min: 0.0, max:10.0, value: gravity, step: 0.1, slide: function( event, ui ) {
+                  $( "#gravity_value" ).html( ui.value);
+                  gravity = ui.value;
+                } });
+                
   });
     
 
