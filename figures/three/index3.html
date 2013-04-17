@@ -1,74 +1,93 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <body>
+	<button onclick="simulation_stopped = false;">Start!</button>
+	<button onclick="simulation_stopped = true;">Stop!</button>
+	<br><br>
+  <div id="gravity_slider" style="width:30%"></div>
+	<p>gravity = <span id="gravity_value">1.0</span>
+</body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r57/three.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <script>
 
-    var camera, scene, renderer;
-    var geometry, material, mesh;
+  var camera, scene, renderer;
+  var geometry, material, mesh;
+
+  var gravity = 1.0;
+  var ground_position  = -400;
+  var half_world_width = 500;
+  var simulation_stopped = true;
+
+  init();
+  animate();
+
+  function init() {
+
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera.position.z = 1000;
+
+    scene = new THREE.Scene();
+
+    geometry = new THREE.SphereGeometry( 200, 20, 20 );
+    material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+
+    mesh = new THREE.Mesh( geometry, material );
+    console.info(mesh);
+    mesh.speed = {x:0.0, y:0.0};
+    console.info(mesh);
+    scene.add( mesh );
+
+    renderer = new THREE.CanvasRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+    document.body.appendChild( renderer.domElement );
+
+  	setInterval(update_world, 50);
+
+  } //init()
+
+  function animate() {
+
+    // note: three.js includes requestAnimationFrame shim
+    requestAnimationFrame( animate );
+
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+
+    renderer.render( scene, camera );
+
+  }
+
+  function update_world() {
+    if(simulation_stopped == true){
+      return;
+    }
+    mesh.position.y += mesh.speed.y;
+    mesh.position.x += mesh.speed.x;
+
+
+
+  	if( (mesh.position.y < ground_position) || (mesh.position.y > -ground_position) ){
+       mesh.speed.y = -mesh.speed.y;
+    }
+  	else{
+  		mesh.speed.y -= $("#gravity_slider").slider("value");
+  	}
+
+    if( (mesh.position.x < -half_world_width) || (mesh.position.x > half_world_width) ){
+       mesh.speed.x = -mesh.speed.x;
+    }
+
+  }
+
+  $(function() {
+    $( "#gravity_slider" ).slider({ min: 0.0, max:10.0, value: 1.0, step: 0.1 });
+  });
     
-    var gravity = 1.0;
-    var ground_position  = -400;
-    
-
-    init();
-    animate();
-
-    function init() {
-
-        camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-        camera.position.z = 1000;
-
-        scene = new THREE.Scene();
-
-        geometry = new THREE.SphereGeometry( 200, 10, 10 );
-        material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
-
-        mesh = new THREE.Mesh( geometry, material );
-        console.info(mesh);
-        mesh.speed = {x:0.0, y:0.0};
-        console.info(mesh);
-        scene.add( mesh );
-
-        renderer = new THREE.CanvasRenderer();
-        renderer.setSize( window.innerWidth, window.innerHeight );
-
-        document.body.appendChild( renderer.domElement );
-
-	setInterval(update_world, 50);
-
-    }
-
-    function animate() {
-
-        // note: three.js includes requestAnimationFrame shim
-        requestAnimationFrame( animate );
-	//mesh.translateZ(1);
-	
-        mesh.rotation.x += 0.01;
-        mesh.rotation.y += 0.02;
-	//mesh.position.z += 1;
-
-        renderer.render( scene, camera );
-
-    }
-
-    function update_world() {
-        mesh.position.y += mesh.speed.y;
-        mesh.position.x += mesh.speed.x;
-
-	
-
-	if(mesh.position.y < ground_position){
-     		mesh.speed.y = -mesh.speed.y;
-		//mesh.position.y = ground_position;
-        }
-	else{
-		mesh.speed.y -= gravity;
-	}
-
-    }
 
 </script>
-</body>
+
