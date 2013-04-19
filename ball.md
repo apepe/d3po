@@ -1,1 +1,1 @@
-####Some online articles now let one rotate 3d figures.
+####Some online articles now let one rotate 3d figures.  We can do better:
