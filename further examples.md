@@ -1,1 +1,1 @@
-####Lots of great d3 examples can be found at http://techslides.com/over-1000-d3-js-examples-and-demos/ and https://github.com/mbostock/d3/wiki/Gallery
+Lots of great d3 examples can be found at http://techslides.com/over-1000-d3-js-examples-and-demos/ and https://github.com/mbostock/d3/wiki/Gallery
