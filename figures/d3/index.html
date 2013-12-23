@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
+html, body, svg, div { 
+    margin: 0px;
+    padding: 0px;
+    font-family: "Source Sans Pro";
+}
+
+div {
+  padding: 10px;
+}
 svg {
     /*-webkit-transform: translateZ(0);*/
     font: 12pt sans-serif;
@@ -129,12 +138,20 @@ circle.hidden {
 }
 
 </style>
+<body>
+
         <script src="master/file/js/d3.v3.min.js?raw=true"></script>
         <script src="master/file/js/util.js?raw=true"></script>
         <script src="master/file/js/jquery.min.js?raw=true"></script>
         <script src="master/file/js/d3po.js?raw=true"></script>
         <script src="master/file/js/d3po.init.js?raw=true"></script>
 
+        <script>
+            $(document).ready(function() {
+                initialize();
+                loadJSON("data/sample_states.json");
+            });
+        </script>
 
         <div id="svg"><svg></svg></div>
         <div id="controls">
@@ -159,6 +176,7 @@ circle.hidden {
             <a href="">D. Muna</a> //
             <a href="http://www.ast.cam.ac.uk/~ts337/">T. Staley</a> //
         </div>
+
 
 
 </html>
