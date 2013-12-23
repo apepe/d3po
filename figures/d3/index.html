@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 
-        <link rel="stylesheet" type="text/css" href="master/file/css/style.css?raw=true">
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,200,300,400,700' rel='stylesheet' type='text/css'>
-
         <script src="master/file/js/d3.v3.min.js?raw=true"></script>
         <script src="master/file/js/util.js?raw=true"></script>
         <script src="master/file/js/jquery.min.js?raw=true"></script>
         <script src="master/file/js/d3po.js?raw=true"></script>
         <script src="master/file/js/d3po.init.js?raw=true"></script>
 
+
+        <div id="svg"><svg></svg></div>
+        <div id="controls">
+            <ul class="navigation">
+            </ul>
+        </div>
+        <div id="caption"></div>
 
         <div id="footer">
             <select id="dataSource" onChange="loadJSON(this.value);">
