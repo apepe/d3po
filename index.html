@@ -30,10 +30,10 @@
 
         <div id="footer">
             <select id="dataSource" onChange="loadJSON(this.value);">
-                <option value="data/sample_states.json" selected="selected">M-dwarfs</option>
-                <option value="data/kepler_states.json">Kepler</option>
-                <option value="data/segue_states.json">Segue</option>
-                <!--<option value="data/borked.json">BORK</option>-->
+                <option value="master/file/data/sample_states.json?raw=true" selected="selected">M-dwarfs</option>
+                <option value="master/file/data/kepler_states.json?raw=true">Kepler</option>
+                <option value="master/file/data/segue_states.json?raw=true">Segue</option>
+                <!--<option value="data/borked.json?raw=true">BORK</option>-->
             </select>
             <a href="http://adrian.pw">A. M. Price-Whelan</a> //
             <a href="http://www.astro.columbia.edu/~jpeek/">J. E. G. Peek</a> //
@@ -47,11 +47,9 @@
 
         <a href="https://github.com/adrn/d3po"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme.png" alt="Fork me on GitHub"></a>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
+        <script>
                 initialize();
-                loadJSON("data/sample_states.json");
-            });
+                loadJSON("master/file/data/sample_states.json?raw=true");
         </script>
     </body>
 
