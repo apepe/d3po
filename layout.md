@@ -1,2 +1,2 @@
 introduction.tex
-index.html
+figures/d3/index.html
