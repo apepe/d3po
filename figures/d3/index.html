@@ -152,7 +152,10 @@ circle.hidden {
 jsonFilename = "simple_states.json"
 
     d3.json(jsonFilename, function(error, _tmp) {
-
+            if (error) {
+                console.warn(error);
+                alert('Unable to read/parse file "' + jsonData["filename"] + '"');
+            }
         jsonData = 0;
 
         // TODO: figure out type of file, use appropriate reader
