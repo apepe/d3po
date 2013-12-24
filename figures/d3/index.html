@@ -149,7 +149,47 @@ circle.hidden {
         <script>
             $(document).ready(function() {
                 initialize();
-                loadJSON("master/file/sample_states.js");
+jsonFilename = "simple_states.json"
+
+    d3.json(jsonFilename, function(error, _tmp) {
+
+        jsonData = 0;
+
+        // TODO: figure out type of file, use appropriate reader
+        d3.csv(jsonData["filename"], function(error, _tmp) {
+            if (error) {
+                console.warn(error);
+                alert('Unable to read/parse file "' + jsonData["filename"] + '"');
+            }
+            allPlotData = _tmp;
+            columnNames = d3.keys(allPlotData[0]);
+
+            // draw the first state
+            drawState(jsonData['states'][0]);
+
+            var presets = d3.select("#controls .navigation").selectAll("li")
+                            .data(jsonData['states']);
+
+            presets.enter().append("li")
+                   .on("click", function(e,i) {
+                        drawState(jsonData['states'][i]);
+                        $(".navigation li").removeClass("selected");
+                        $(this).addClass("selected");
+                   });
+
+            presets.text(function(d, i){ return d['name']; });
+            presets.exit().remove();
+
+            $(".navigation li:first-of-type").addClass("selected");
+        });
+    });
+
+
+
+
+
+
+
             });
         </script>
 
