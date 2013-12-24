@@ -146,10 +146,13 @@ circle.hidden {
         <script src="master/file/js/d3po.js?raw=true"></script>
         <script src="master/file/js/d3po.init.js?raw=true"></script>
 
+        <script src="master/file/data/sample_states.json?raw=true"></script>
+        <script src="master/file/data/sample_data.csv?raw=true"></script>
+
         <script type="text/javascript">
             $(document).ready(function() {
                 initialize();
-                loadJSON("https://dl.dropboxusercontent.com/u/13540018/sample_states.json");
+                loadJSON(sample_data);
             });
         </script>
 
