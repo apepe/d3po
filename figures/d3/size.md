@@ -1,2 +1,2 @@
-width = 900
+width = 1000
 height = 650
