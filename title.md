@@ -1,1 +1,1 @@
-A d3po.js plot
+Write interacting science with Authorea
