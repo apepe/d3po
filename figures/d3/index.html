@@ -12,15 +12,16 @@ div {
 }
 svg {
     /*-webkit-transform: translateZ(0);*/
-    font: 12pt sans-serif;
+    font: 10pt sans-serif;
     font-family: "Source Sans Pro";
     font-weight: 100;
-    padding: 10px;
-    background: #f7f5f0;
+    padding: 0px;
+    background: #fff;
     margin: 0 auto;
     display: block;
-    border: 2px solid #555;
+    border: 0px solid #555;
     border-radius: 8px;
+    max-width: 800px;
 }
 
 .hack {
@@ -160,21 +161,5 @@ circle.hidden {
             </ul>
         </div>
         <div id="caption"></div>
-
-        <div id="footer">
-            <select id="dataSource" onChange="loadJSON(this.value);">
-                <option value="master/file/data/sample_states.json?raw=true" selected="selected">M-dwarfs</option>
-                <option value="master/file/data/kepler_states.json?raw=true">Kepler</option>
-                <option value="master/file/data/segue_states.json?raw=true">Segue</option>
-            </select>
-            <a href="http://adrian.pw">A. M. Price-Whelan</a> //
-            <a href="http://www.astro.columbia.edu/~jpeek/">J. E. G. Peek</a> //
-            <a href="https://www.cfa.harvard.edu/~enewton/">E. R. Newton</a> //
-            <a href="http://people.seas.harvard.edu/~borkin/">M. Borkin</a> //
-            <a href="http://www.physics.usyd.edu.au/~jallen/">J. Allen</a> //
-            <a href="http://www.ruthangus.co.uk/">R. Angus</a> //
-            <a href="">D. Muna</a> //
-            <a href="http://www.ast.cam.ac.uk/~ts337/">T. Staley</a> //
-        </div>
 
 </html>
