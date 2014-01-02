@@ -1,1 +1,1 @@
-Write interacting science with Authorea
+Science you can play with
