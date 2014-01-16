@@ -1,1 +1,1 @@
-Science you can play with
+Data-driven, interactive science, with d3.js plots and IPython Notebooks
