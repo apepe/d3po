@@ -1,5 +1,5 @@
 javascript.tex
-figures/d3/index.html
+figures/d3
 ipython.tex
-figures/curves/curves.png
+figures/curves
 what next.tex
