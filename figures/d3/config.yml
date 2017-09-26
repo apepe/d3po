@@ -8,7 +8,7 @@ grid:
   rows: 1
   columns: 1
   grid_elements:
-  - path: figures/d3/index.html
+  - path: figures/d3/d3po-working.html
     type: html
     from:
     - 1
@@ -16,4 +16,5 @@ grid:
     to:
     - 1
     - 1
-    url: "/users/3/articles/3904/master/file/figures/d3/index.html"
+    folder_url: "/users/3/articles/3904/master/folder/figures/d3"
+    url: "/users/3/articles/3904/master/file/figures/d3/d3po-working.html"
