@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+html, body, svg, div {
+    margin: 0px;
+    margin-left: -35px;
+    max-height:
+    padding: 0px;
+    font-family: "Source Sans Pro";
+}
+
+svg {
+    /*-webkit-transform: translateZ(0);*/
+    font: 10pt sans-serif;
+    font-family: "Source Sans Pro";
+    font-weight: 100;
+    padding: 0px;
+    background: #fff;
+    margin: 0 auto;
+    display: block;
+    border: 0px solid #555;
+    max-width: 1000px;
+}
+
+.hack {
+    display: block;
+    margin: 0 auto;
+}
+
+
+.axis-label {
+    font-weight: 200;
+    font-size: 13pt;
+}
+
+.axis,
+.frame {
+  shape-rendering: crispEdges;
+}
+
+.axis line {
+  stroke: #ddd;
+}
+
+.axis path {
+  display: none;
+}
+
+.frame {
+  fill: #fff;
+  stroke: #aaa;
+  zorder: -1;
+}
+
+circle {
+}
+
+circle.hidden {
+  fill: #ccc !important;
+}
+
+.extent {
+  fill: #000;
+  fill-opacity: .125;
+  stroke: #fff;
+}
+
+#caption{
+  word-wrap: normal;
+  font: 20px sans-serif;
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+
+#footer {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 10pt;
+    color: #666;
+}
+
+#footer a {
+    color: #555;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+#controls {
+    margin: 0 auto;
+    margin-top:-10px;
+    max-width: 800px;
+    text-align: center;
+}
+
+.navigation {
+    list-style: none;
+    display: inline;
+}
+.navigation li {
+  color: #555;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 3px 5px;
+  background: #fff;
+  margin: 0 0;
+  white-space: nowrap;
+  display:inline-block;
+}
+
+.navigation li:first-of-type{
+  border-radius: 4px 0 0 4px;
+}
+.navigation li:last-of-type{
+  border-radius: 0 4px 4px 0;
+}
+.navigation li.selected {
+  color: #000;
+  background: #e9e9e9;
+  border-color: #AAA;
+  box-shadow: inset 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+.y-label {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+}
+
+</style>
+<body>
+
+        <script src="https://dl.dropboxusercontent.com/s/i1d8jg13svngoiv/d3.v3.min.js?raw=true"></script>
+        <script src="https://dl.dropboxusercontent.com/s/sls9qeq2qphi7y3/util.js?raw=true"></script>
+        <script src="https://dl.dropboxusercontent.com/s/neh8eh78mda858f/jquery.min.js?raw=true"></script>
+        <script src="https://dl.dropboxusercontent.com/s/fq9h7ghrqv4x1mk/d3po.js?raw=true"></script>
+        <script src="https://dl.dropboxusercontent.com/s/4fvlq142tlwwf2p/d3po.init.js?raw=true"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                initialize();
+                loadJSON("https://dl.dropboxusercontent.com/s/npd4ndc5aq3v2rk/sample_states.json?dl=1");
+            });
+        </script>
+
+
+        <div id="svg"><svg></svg></div>
+        <center><h3>Select points above and options below:</h3></center>
+        <div id="controls">
+            <ul class="navigation">
+            </ul>
+        </div>
+</html>
